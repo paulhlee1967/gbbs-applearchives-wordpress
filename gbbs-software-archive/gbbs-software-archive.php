@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GBBS Software Archive
  * Description: Archive and management system for GBBS Pro and GBBS II software archives.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Paul H. Lee
  * Text Domain: gbbs-software-archive
  * Domain Path: /languages
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('GBBS_SOFTWARE_ARCHIVE_VERSION', '1.0.0');
+define('GBBS_SOFTWARE_ARCHIVE_VERSION', '1.0.1');
 define('GBBS_SOFTWARE_ARCHIVE_DIR', plugin_dir_path(__FILE__));
 define('GBBS_SOFTWARE_ARCHIVE_URL', plugin_dir_url(__FILE__));
 define('GBBS_SOFTWARE_ARCHIVE_BASENAME', plugin_basename(__FILE__));

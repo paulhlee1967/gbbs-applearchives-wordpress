@@ -1081,7 +1081,13 @@ class GBBS_Software_Archive {
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                document.getElementById('gbbs-loading-stats').parentElement.innerHTML = data.data;
+                                // Remove the loading stat item and insert the new stats
+                                var loadingElement = document.getElementById('gbbs-loading-stats').parentElement;
+                                loadingElement.remove();
+                                
+                                // Insert the new stats into the stats container
+                                var statsContainer = document.getElementById('gbbs-stats-container');
+                                statsContainer.insertAdjacentHTML('beforeend', data.data);
                             }
                         })
                         .catch(error => {
@@ -3684,9 +3690,10 @@ class GBBS_Software_Archive {
         $ids_placeholder = implode(',', array_fill(0, count($archive_ids), '%d'));
         
         $query = $wpdb->prepare("
-            SELECT tr.object_id, tt.name 
+            SELECT tr.object_id, t.name 
             FROM {$wpdb->term_relationships} tr
             INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+            INNER JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
             WHERE tr.object_id IN ($ids_placeholder) 
             AND tt.taxonomy = 'gbbs_volume'
         ", $archive_ids);

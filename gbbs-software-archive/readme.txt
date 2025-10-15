@@ -3,7 +3,7 @@ Contributors: paulhlee1967
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,12 @@ Absolutely! The plugin uses responsive design and works well on all devices.
 6. Download statistics and analytics dashboard
 
 == Changelog ==
+
+= 1.0.1 =
+* Fixed Volume column display issue in archive directory table
+* Improved BBS header layout and alignment
+* Enhanced statistics loading mechanism
+* Fixed SQL query for proper volume name retrieval
 
 = 1.0.0 =
 * Initial release

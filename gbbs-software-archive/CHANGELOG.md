@@ -5,6 +5,18 @@ All notable changes to the GBBS Software Archive WordPress plugin will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-01-27
+
+### Fixed
+- **Volume Display Issue**: Fixed Volume column not showing properly in the archive directory table due to incorrect database query join
+- **BBS Header Layout**: Improved BBS-style header layout and alignment for better visual consistency
+- **Statistics Loading**: Enhanced statistics loading mechanism to properly replace loading indicators with actual data
+
+### Technical Details
+- Fixed SQL query in `get_bulk_archive_metadata()` method to properly join `wp_terms` table for volume name retrieval
+- Improved CSS layout for `.bbs-system-info` container with better flexbox alignment
+- Enhanced JavaScript statistics loading to properly remove loading elements and insert new content
+
 ## [1.0.0] - 2025-01-27
 
 ### Added

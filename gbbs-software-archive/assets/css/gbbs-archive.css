@@ -568,16 +568,15 @@ body.gbbs-archive h1.entry-title {
 
 .bbs-system-info {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
-    flex-wrap: wrap;
     gap: 2rem;
 }
 
 .bbs-welcome {
-    flex: 1;
-    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
 }
 
 .bbs-welcome-text {
@@ -603,6 +602,7 @@ body.gbbs-archive h1.entry-title {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    align-items: center;
 }
 
 .bbs-stat-item {
