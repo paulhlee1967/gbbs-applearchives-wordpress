@@ -1,0 +1,69 @@
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/
+wp-content/cache/supercache/
+wp-content/debug.log
+
+# Plugin specific
+uploads/gbbs-archives/
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Build files
+dist/
+build/
+*.min.css
+*.min.js
+
+# Temporary files
+*.tmp
+*.temp
+
+# Archive files (ignore all archives)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Backup files
+*.bak
+*.backup
+
+# Test files
+/tests/
+phpunit.xml
+.phpunit.result.cache
+
+# Personal/development files
+../AI_CONTEXT.md

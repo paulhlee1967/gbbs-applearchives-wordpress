@@ -1,0 +1,426 @@
+/* GBBS Software Archive Admin Styles */
+
+.gbbs-archive-info {
+    margin: 0;
+}
+
+.gbbs-archive-info th {
+    width: 150px;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+.gbbs-archive-info td {
+    padding-bottom: 10px;
+}
+
+.gbbs-archive-files {
+    margin: 0;
+}
+
+.gbbs-files-list {
+    margin-bottom: 20px;
+}
+
+.gbbs-file-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.gbbs-file-header {
+    background: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gbbs-file-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.gbbs-file-item .form-table {
+    margin: 0;
+    background: #fff;
+}
+
+.gbbs-file-item .form-table th {
+    width: 120px;
+    vertical-align: top;
+    padding: 15px 15px 10px 15px;
+    font-weight: 600;
+}
+
+.gbbs-file-item .form-table td {
+    padding: 15px 15px 10px 0;
+}
+
+.gbbs-file-item .gbbs-file-url {
+    background: #f7f7f7;
+    border-color: #ddd;
+}
+
+.gbbs-upload-file-button {
+    margin-left: 5px;
+}
+
+.gbbs-upload-file-button:before {
+    content: "\f321";
+    font-family: dashicons;
+    margin-right: 5px;
+}
+
+.gbbs-remove-file {
+    color: #a00;
+    border-color: #a00;
+}
+
+.gbbs-remove-file:hover {
+    background: #a00;
+    color: #fff;
+}
+
+.gbbs-add-file-section {
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.gbbs-add-file {
+    margin-bottom: 10px;
+}
+
+.gbbs-add-file:before {
+    content: "\f132";
+    font-family: dashicons;
+    margin-right: 5px;
+}
+
+.gbbs-file-warning {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.gbbs-invalid-file {
+    border-color: #d63638 !important;
+}
+
+.gbbs-file-category {
+    min-width: 150px;
+}
+
+.gbbs-file-description {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* Sortable enhancement */
+.gbbs-files-list.ui-sortable .gbbs-file-item {
+    cursor: move;
+}
+
+.gbbs-files-list.ui-sortable .gbbs-file-header {
+    cursor: move;
+}
+
+.gbbs-files-list.ui-sortable .gbbs-file-item.ui-sortable-helper {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transform: rotate(2deg);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .gbbs-file-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .gbbs-file-item .form-table th {
+        width: 100%;
+        display: block;
+        padding-bottom: 5px;
+    }
+    
+    .gbbs-file-item .form-table td {
+        display: block;
+        padding-left: 15px;
+        padding-top: 0;
+    }
+    
+    .gbbs-upload-file-button {
+        margin-left: 0;
+        margin-top: 5px;
+        display: block;
+    }
+}
+
+/* File type indicators */
+.gbbs-file-item[data-file-type="main"] {
+    border-left: 4px solid #0073aa;
+}
+
+.gbbs-file-item[data-file-type="documentation"] {
+    border-left: 4px solid #00a32a;
+}
+
+.gbbs-file-item[data-file-type="source"] {
+    border-left: 4px solid #dba617;
+}
+
+.gbbs-file-item[data-file-type="config"] {
+    border-left: 4px solid #826eb4;
+}
+
+.gbbs-file-item[data-file-type="utility"] {
+    border-left: 4px solid #d63638;
+}
+
+.gbbs-file-item[data-file-type="other"] {
+    border-left: 4px solid #8c8f94;
+}
+
+/* Animation for adding/removing files */
+.gbbs-file-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gbbs-file-item.removing {
+    animation: slideOut 0.3s ease-in;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* ========================================
+   Archive Selector Modal Styles
+   ======================================== */
+
+.gbbs-archive-selector-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 160000;
+    display: none;
+}
+
+.gbbs-archive-selector-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.gbbs-archive-selector-header {
+    background: #f1f1f1;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gbbs-archive-selector-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.gbbs-archive-selector-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gbbs-archive-selector-close:hover {
+    color: #d63638;
+}
+
+.gbbs-archive-selector-body {
+    padding: 20px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.gbbs-archive-search {
+    margin-bottom: 20px;
+}
+
+.gbbs-archive-search input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.gbbs-archive-filters {
+    margin-bottom: 15px;
+}
+
+.gbbs-archive-filters label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.gbbs-archive-filters select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.gbbs-archive-list {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.gbbs-archive-items {
+    background: #fff;
+}
+
+.gbbs-archive-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.gbbs-archive-item:last-child {
+    border-bottom: none;
+}
+
+.gbbs-archive-item:hover {
+    background: #f9f9f9;
+}
+
+.gbbs-archive-item.selected {
+    background: #0073aa;
+    color: #fff;
+}
+
+.gbbs-archive-item-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.gbbs-archive-item-meta {
+    font-size: 12px;
+    color: #666;
+}
+
+.gbbs-archive-item.selected .gbbs-archive-item-meta {
+    color: #ccc;
+}
+
+.gbbs-archive-loading,
+.gbbs-archive-empty,
+.gbbs-archive-error {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.gbbs-archive-error {
+    color: #d63638;
+}
+
+.gbbs-archive-options {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.gbbs-archive-options label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.gbbs-archive-options input[type="text"] {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 200px;
+}
+
+.gbbs-archive-selector-footer {
+    background: #f1f1f1;
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.gbbs-archive-selector-footer .button {
+    margin: 0;
+}
+
+/* Insert Archive Button */
+#insert-gbbs-archive {
+    margin-left: 5px;
+}
+
+#insert-gbbs-archive .wp-media-buttons-icon:before {
+    content: "\f123"; /* Archive icon */
+    font-family: dashicons;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+}

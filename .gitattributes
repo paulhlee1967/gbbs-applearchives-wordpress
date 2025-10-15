@@ -1,0 +1,55 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# WordPress specific
+*.php text
+*.css text
+*.js text
+*.json text
+*.md text
+*.txt text
+*.html text
+*.htm text
+
+# Configuration files
+*.yml text
+*.yaml text
+*.xml text
+*.ini text
+*.conf text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.svg binary
+*.zip binary
+*.tar.gz binary
+*.rar binary
+*.7z binary
+
+# Font files
+fonts/*.ttf binary
+fonts/*.woff binary
+fonts/*.woff2 binary
+
+# Archive files
+*.zip binary
+*.tar.gz binary
+*.rar binary
+*.7z binary
+
+# Images
+screenshot.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.png binary
+*.ico binary
+*.svg binary

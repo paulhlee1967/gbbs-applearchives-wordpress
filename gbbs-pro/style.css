@@ -1,0 +1,1836 @@
+/*
+Theme Name: GBBS Pro
+Theme URI: https://github.com/paulhlee1967/gbbs-pro-wordpress-theme
+Author: Paul Lee
+Author URI: https://github.com/paulhlee1967
+Description: A retro Apple II-inspired WordPress theme with authentic lo-res graphics styling. Features the complete 16-color Apple II lo-res graphics palette with monospace fonts and ASCII art separators.
+Requires at least: 6.8
+Tested up to: 6.8
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: gbbs-pro
+Tags: retro, terminal, monospace, apple-ii, colorful, lo-res, graphics, vintage, 16-color
+*/
+
+/* ============================================
+   HEADER LAYOUT FIXES
+   ============================================ */
+
+/* Force header to stack vertically */
+.gbbs-header-main {
+    display: block !important;
+    width: 100% !important;
+}
+
+.gbbs-header-top {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+}
+
+.gbbs-header-nav {
+    display: block !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+/* Logo and title row should be flex */
+.gbbs-header-top > .wp-block-group {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.wp-block-site-logo {
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+.wp-block-site-title,
+.wp-block-site-tagline {
+    display: block !important;
+}
+
+/* ============================================
+   BASIC THEME STYLES
+   ============================================ */
+
+body {
+    background-color: var(--wp--preset--color--black);
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+.wp-site-blocks {
+    background-color: var(--wp--preset--color--black);
+    min-height: 100vh;
+}
+
+#main {
+    min-height: 50vh;
+    display: block;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+/* Override main padding when BBS terminal is present - but keep some top margin */
+#main:has(#bbs-screen) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Query container styling for posts loop */
+.wp-block-query {
+    margin: 0;
+    padding: 0;
+}
+
+/* Post template styling */
+.wp-block-post-template {
+    margin: 0;
+    padding: 0;
+}
+
+/* BBS Terminal Page - Override responsive margins for retro terminal */
+#bbs-screen {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    max-width: 700px; /* Wider for proper 4:3 aspect ratio */
+    width: 100%;
+    /* Override any inherited constraints */
+    min-width: 600px;
+    max-width: 700px;
+}
+
+/* Ensure parent containers don't constrain the terminal */
+.wp-block-html:has(#bbs-screen),
+.wp-block-shortcode:has(#bbs-screen) {
+    max-width: none !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Override any parent container constraints for the terminal */
+.wp-block-group:has(#bbs-screen) {
+    max-width: none !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Ensure post titles display properly */
+.wp-block-post-title {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+}
+
+/* ============================================
+   GBBS PRO MESSAGE HEADER STYLING
+   ============================================ */
+
+/* GBBS Pro Message Header Container */
+.gbbs-pro-message-header {
+    margin: 2rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* GBBS Pro Message Info Container */
+.gbbs-pro-message-info {
+    background-color: var(--wp--preset--color--black);
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* GBBS Pro Message Line Styling */
+.gbbs-pro-message-line {
+    margin: 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--wp--preset--color--light-green);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+/* GBBS Pro Label Styling */
+.gbbs-pro-label {
+    display: inline-block;
+    width: 4ch;
+    font-weight: normal;
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    flex-shrink: 0;
+}
+
+/* GBBS Pro Content Styling */
+.gbbs-pro-category,
+.gbbs-pro-post-number,
+.gbbs-pro-post-title,
+.gbbs-pro-author,
+.gbbs-pro-date {
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+/* WordPress block styling within message lines */
+.gbbs-pro-message-line .wp-block-post-terms,
+.gbbs-pro-message-line .wp-block-post-title,
+.gbbs-pro-message-line .wp-block-post-author,
+.gbbs-pro-message-line .wp-block-post-date {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    flex: 1 !important;
+}
+
+/* Specific styling for post title to ensure flush left */
+.gbbs-pro-message-line .wp-block-post-title {
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Responsive message header sizing */
+@media (max-width: 768px) {
+    .gbbs-pro-message-info {
+        font-size: 12px;
+    }
+
+    .gbbs-pro-message-line {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gbbs-pro-message-info {
+        font-size: 11px;
+    }
+
+    .gbbs-pro-message-line {
+        font-size: 11px;
+    }
+}
+
+/* ============================================
+   GBBS PRO PAGE HEADER STYLING
+   ============================================ */
+
+/* GBBS Pro Page Header Container */
+.gbbs-pro-page-header {
+    text-align: center;
+    margin: 2rem auto;
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+/* GBBS Pro Page Title Styling */
+.gbbs-pro-page-title {
+    color: var(--wp--preset--color--light-green) !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    position: relative;
+}
+
+/* Add square brackets around the title */
+.gbbs-pro-page-title::before {
+    content: "[ ";
+    color: var(--wp--preset--color--light-green);
+}
+
+.gbbs-pro-page-title::after {
+    content: " ]";
+    color: var(--wp--preset--color--light-green);
+}
+
+/* GBBS Pro Header Dashed Lines */
+.gbbs-pro-header-top-dash,
+.gbbs-pro-header-bottom-dash {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 20px !important;
+    color: var(--wp--preset--color--light-green) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-align: center !important;
+}
+
+/* Remove any default content from dash elements */
+.gbbs-pro-header-top-dash,
+.gbbs-pro-header-bottom-dash {
+    content: "";
+}
+
+/* Remove any ::before content that might add extra dashes */
+.gbbs-pro-header-top-dash::before,
+.gbbs-pro-header-bottom-dash::before {
+    content: "";
+}
+
+/* Responsive title sizing */
+@media (max-width: 768px) {
+    .gbbs-pro-page-title {
+        font-size: 18px !important;
+    }
+
+    .gbbs-pro-header-top-dash,
+    .gbbs-pro-header-bottom-dash {
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .gbbs-pro-page-title {
+        font-size: 16px !important;
+    }
+
+    .gbbs-pro-header-top-dash,
+    .gbbs-pro-header-bottom-dash {
+        font-size: 16px !important;
+    }
+}
+
+/* ============================================
+   GBBS PRO SEPARATORS
+   ============================================ */
+
+.gbbs-pro-separator {
+    border: none;
+    height: auto;
+    margin: 1.5rem auto;
+    background: none;
+    text-align: center;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.gbbs-pro-separator-dash {
+    border: none;
+    height: auto;
+    margin: 1rem 0;
+    background: none;
+    text-align: center;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.gbbs-pro-separator-equals::before {
+    content: "========================================";
+}
+
+.gbbs-pro-separator-asterisks {
+    border: none;
+    height: auto;
+    margin: 1.5rem auto;
+    background: none;
+    text-align: center;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.gbbs-pro-separator-asterisks::before {
+    content: "****************************************";
+    display: block;
+    text-align: center;
+}
+
+.gbbs-pro-separator-dots::before {
+    content: "................................";
+}
+
+.gbbs-pro-separator-hash {
+    border: none;
+    height: auto;
+    margin: 1.5rem auto;
+    background: none;
+    text-align: center;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.gbbs-pro-separator-hash::before {
+    content: "########################################";
+    display: block;
+    text-align: center;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.5px;
+    color: var(--wp--preset--color--light-green) !important;
+}
+
+/* WordPress Block Title Styles - Override any default colors */
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-heading,
+.wp-block-post-title a,
+.wp-block-query-title a,
+.wp-block-heading a,
+.wp-block-post-title.has-text-color,
+.wp-block-query-title.has-text-color,
+.wp-block-heading.has-text-color {
+    color: var(--wp--preset--color--light-green) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.wp-block-post-content {
+    line-height: 1.4;
+    font-size: 14px;
+    margin: 1rem 0;
+}
+
+/* ============================================
+   BLOCK STYLES
+   ============================================ */
+
+/* Captions - Additional styling not covered by theme.json */
+.wp-block-image figcaption,
+.wp-block-gallery figcaption,
+.wp-block-video figcaption,
+.wp-block-audio figcaption,
+.wp-block-embed figcaption,
+figcaption {
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+/* Button hover state - Additional styling not covered by theme.json */
+.wp-block-button__link:hover {
+    background-color: var(--wp--preset--color--dark-green);
+    color: var(--wp--preset--color--light-green);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+/* Navigation bracket functionality and hover state - not covered by theme.json */
+.wp-block-navigation a {
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+/* Ensure parent navigation items with submenus are positioned relatively */
+.wp-block-navigation-item {
+    position: relative;
+}
+
+.wp-block-navigation a::before {
+    content: "[";
+}
+
+.wp-block-navigation a::after {
+    content: "]";
+}
+
+.wp-block-navigation a:hover {
+    color: var(--wp--preset--color--black) !important;
+    background-color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green);
+}
+
+/* Sub-menu styles */
+.wp-block-navigation__submenu-container {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    padding: 0.5rem 0 !important;
+    margin-top: 0 !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    min-width: 200px !important;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item {
+    margin: 0 !important;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item a {
+    color: var(--wp--preset--color--light-green) !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item a::before,
+.wp-block-navigation__submenu-container .wp-block-navigation-item a::after {
+    content: "" !important;
+}
+
+.wp-block-navigation__submenu-container .wp-block-navigation-item a:hover {
+    color: var(--wp--preset--color--black) !important;
+    background-color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+}
+
+/* Sub-menu item separators */
+.wp-block-navigation__submenu-container .wp-block-navigation-item:not(:last-child) {
+    border-bottom: 1px solid rgba(20, 245, 60, 0.2) !important;
+}
+
+/* Keep submenu visible when hovering over it */
+.wp-block-navigation__submenu-container:hover {
+    display: block !important;
+}
+
+/* Ensure submenu stays visible when hovering over parent item */
+.wp-block-navigation-item:hover .wp-block-navigation__submenu-container {
+    display: block !important;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+/* Additional link styling not covered by theme.json */
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+    background-color: var(--wp--preset--color--black);
+    color: var(--wp--preset--color--light-green);
+    border: 2px solid var(--wp--preset--color--light-green);
+    padding: 8px 12px;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+/* Inline code elements */
+code {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 0.25rem 0.5rem !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+}
+
+/* WordPress code block wrapper - no styling */
+.wp-block-code {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+/* Code inside WordPress code blocks */
+.wp-block-code code {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 1rem !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+}
+
+/* Preformatted text - use normal post colors */
+pre,
+.wp-block-code pre {
+    background-color: transparent !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* ============================================
+   COMMENTS
+   ============================================ */
+
+.comments-area {
+    border: 1px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 2rem 0;
+    color: var(--wp--preset--color--light-green);
+}
+
+.comment-item {
+    border-bottom: 1px solid var(--wp--preset--color--dark-green);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    color: var(--wp--preset--color--light-green);
+}
+
+.comment-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.wp-block-query-pagination {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.wp-block-query-pagination a,
+.wp-block-query-pagination span {
+    color: var(--wp--preset--color--light-green);
+    text-decoration: none;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid var(--wp--preset--color--light-green);
+    background-color: var(--wp--preset--color--black);
+    display: inline-block;
+}
+
+.wp-block-query-pagination a:hover {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+.wp-block-query-pagination .current {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+/* Comments pagination styling */
+.wp-block-comments-pagination {
+    text-align: center;
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.wp-block-comments-pagination a,
+.wp-block-comments-pagination span {
+    color: var(--wp--preset--color--light-green);
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid var(--wp--preset--color--light-green);
+    background-color: var(--wp--preset--color--black);
+    display: inline-block;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.wp-block-comments-pagination a:hover {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+.wp-block-comments-pagination .current {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+/* ============================================
+   POST NAVIGATION
+   ============================================ */
+
+.wp-block-post-navigation-link a {
+    color: var(--wp--preset--color--light-green);
+    text-decoration: none;
+    padding: 8px 12px;
+    border: none;
+    background-color: var(--wp--preset--color--black);
+    display: inline-block;
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.wp-block-post-navigation-link a:hover {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+.wp-block-post-navigation-link:not(:has(a)) {
+    display: none;
+}
+
+/* Ensure proper alignment when only one navigation link is present */
+.wp-block-group:has(.wp-block-post-navigation-link) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* When only the next link is present, push it to the right */
+.wp-block-group:has(.wp-block-post-navigation-link:only-child) {
+    justify-content: flex-end;
+}
+
+/* When only the previous link is present, push it to the left */
+.wp-block-group:has(.wp-block-post-navigation-link[data-type="previous"]:only-child) {
+    justify-content: flex-start;
+}
+
+
+/* ============================================
+   POST META
+   ============================================ */
+
+.wp-block-post-date,
+.wp-block-post-author,
+.wp-block-post-terms {
+    font-size: 12px;
+    color: var(--wp--preset--color--light-green);
+    letter-spacing: 0.5px;
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+/* Post meta container styling */
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.post-meta .wp-block-post-date,
+.post-meta .wp-block-post-author,
+.post-meta .wp-block-post-terms {
+    margin: 0;
+}
+
+/* Post tags styling */
+.post-tags {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.post-tags .wp-block-post-terms {
+    display: inline-block;
+    margin: 0 0.25rem;
+}
+
+.post-tags .wp-block-post-terms a {
+    color: var(--wp--preset--color--light-green);
+    text-decoration: none;
+    padding: 2px 6px;
+    border: 1px solid var(--wp--preset--color--light-green);
+    background-color: var(--wp--preset--color--black);
+    font-size: 11px;
+    transition: all 0.2s ease;
+}
+
+.post-tags .wp-block-post-terms a:hover {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+}
+
+/* ============================================
+   SINGLE CATEGORY ENFORCEMENT
+   ============================================ */
+
+/* Since we use a dropdown selector in admin, we only need minimal CSS
+   to ensure any post-terms blocks display categories properly */
+.wp-block-post-terms[data-taxonomy="category"] {
+    /* Single category display is now handled by the dropdown interface */
+}
+
+
+/* ============================================
+   SITE EDITOR FIXES
+   ============================================ */
+
+/* Note: Editor-specific styles are handled in editor-style.css */
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Enhanced mobile responsiveness for GBBS Pro elements */
+@media (max-width: 992px) {
+    .with-sidebar {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .gbbs-pro-sidebar,
+    .apple-ii-sidebar {
+        position: relative !important;
+        top: auto !important;
+        margin-top: 2rem !important;
+        max-width: 100% !important;
+        order: 2;
+    }
+
+    main#main {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    #main {
+        padding: 0 1rem;
+    }
+    
+    /* BBS terminal should still override side padding on mobile but keep top margin */
+    #main:has(#bbs-screen) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .wp-block-site-title {
+        font-size: 18px !important;
+    }
+
+    .wp-block-site-tagline {
+        font-size: 10px !important;
+    }
+
+    .wp-block-navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wp-block-navigation a {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.25rem;
+        padding: 6px 8px;
+    }
+
+    .wp-block-post-title {
+        font-size: 20px !important;
+    }
+
+    .gbbs-pro-separator::before {
+        content: "========================";
+    }
+
+    /* Mobile optimizations for GBBS Pro post items */
+    .gbbs-pro-post-item {
+        padding: 1rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .gbbs-pro-post-item .wp-block-post-title {
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Mobile sidebar optimizations */
+    .gbbs-pro-sidebar {
+        padding: 1rem !important;
+    }
+
+    .gbbs-pro-widget-title {
+        font-size: 12px !important;
+    }
+
+
+    /* Mobile navigation improvements */
+    .wp-block-navigation__submenu-container {
+        position: relative !important;
+        box-shadow: none !important;
+        border: 1px solid var(--wp--preset--color--light-green) !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* Mobile search improvements - buttonless version */
+    .wp-block-search__input {
+        width: 100% !important;
+    }
+
+    /* Sidebar search box mobile fixes */
+    .gbbs-pro-sidebar .wp-block-search__input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #main {
+        padding: 0 0.75rem;
+    }
+    
+    /* BBS terminal should still override side padding on small mobile but keep top margin */
+    #main:has(#bbs-screen) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .wp-block-site-title {
+        font-size: 16px !important;
+    }
+
+    .wp-block-post-title {
+        font-size: 18px !important;
+    }
+
+    .gbbs-pro-separator::before {
+        content: "====================";
+    }
+
+    .wp-block-button__link {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* Extra small screen optimizations */
+    .gbbs-pro-post-item {
+        padding: 0.75rem !important;
+    }
+
+    .gbbs-pro-sidebar {
+        padding: 0.75rem !important;
+    }
+
+
+    /* Compact navigation for very small screens */
+    .wp-block-navigation a {
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+
+    /* Compact separators */
+    .gbbs-pro-separator-dash::before {
+        content: "==================";
+    }
+
+    .gbbs-pro-separator-asterisks::before {
+        content: "******************";
+    }
+}
+
+/* Landscape orientation optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+    .with-sidebar {
+        grid-template-columns: 1fr 200px !important;
+    }
+
+    .gbbs-pro-sidebar,
+    .apple-ii-sidebar {
+        max-width: 200px !important;
+        position: sticky !important;
+        top: 1rem !important;
+    }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .gbbs-pro-separator,
+    .gbbs-pro-separator-dash,
+    .gbbs-pro-separator-asterisks {
+        font-weight: 500;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .wp-block-navigation a {
+        padding: 12px 16px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .wp-block-button__link {
+        min-height: 44px;
+        padding: 12px 24px;
+    }
+
+    .wp-block-search__button {
+        min-height: 44px;
+        padding: 12px 24px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+*:focus {
+    outline: 2px solid var(--wp--preset--color--yellow);
+    outline-offset: 2px;
+}
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text:focus {
+    background-color: var(--wp--preset--color--black);
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: var(--wp--preset--color--light-green);
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* ============================================
+   PERFORMANCE
+   ============================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   GBBS PRO UTILITY CLASSES
+   ============================================ */
+
+/* GBBS Pro Terminal Window */
+.gbbs-pro-terminal-window {
+    background-color: var(--wp--preset--color--black);
+    border: 2px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    position: relative;
+}
+
+.gbbs-pro-terminal-window::before {
+    content: "GBBS PRO TERMINAL";
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background-color: var(--wp--preset--color--black);
+    color: var(--wp--preset--color--light-green);
+    padding: 0 8px;
+    font-size: 10px;
+    font-family: var(--wp--preset--font-family--apple-ii-80);
+}
+
+/* GBBS Pro Command Prompt */
+.gbbs-pro-command-prompt::before {
+    content: "] ";
+    color: var(--wp--preset--color--light-green);
+    font-weight: bold;
+}
+
+/* GBBS Pro Screen Layout */
+.gbbs-pro-screen {
+    background-color: var(--wp--preset--color--black);
+    border: 3px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    min-height: 200px;
+}
+
+/* GBBS Pro Shortcode Block Styling */
+.wp-block-shortcode,
+.wp-block-shortcode .components-base-control,
+.wp-block-shortcode .components-base-control__field,
+.wp-block-shortcode .components-textarea-control,
+.wp-block-shortcode .components-textarea-control__input-container {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+}
+
+.wp-block-shortcode .wp-block-shortcode__label {
+    color: var(--wp--preset--color--light-green) !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 12px !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.wp-block-shortcode .wp-block-shortcode__content,
+.wp-block-shortcode textarea,
+.wp-block-shortcode input[type="text"] {
+    background-color: var(--wp--preset--color--black) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 0.75rem !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Editor-specific shortcode block styling */
+.editor-styles-wrapper .wp-block-shortcode,
+.editor-styles-wrapper .wp-block-shortcode .components-base-control,
+.editor-styles-wrapper .wp-block-shortcode .components-base-control__field,
+.editor-styles-wrapper .wp-block-shortcode .components-textarea-control,
+.editor-styles-wrapper .wp-block-shortcode .components-textarea-control__input-container {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+}
+
+.editor-styles-wrapper .wp-block-shortcode .wp-block-shortcode__label {
+    color: var(--wp--preset--color--light-green) !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 12px !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.editor-styles-wrapper .wp-block-shortcode .wp-block-shortcode__content,
+.editor-styles-wrapper .wp-block-shortcode textarea,
+.editor-styles-wrapper .wp-block-shortcode input[type="text"] {
+    background-color: var(--wp--preset--color--black) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 0.75rem !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Additional shortcode input selectors for maximum coverage */
+.wp-block-shortcode input,
+.wp-block-shortcode textarea,
+.wp-block-shortcode .components-textarea-control__input,
+.wp-block-shortcode .components-base-control__field input,
+.editor-styles-wrapper .wp-block-shortcode input,
+.editor-styles-wrapper .wp-block-shortcode textarea,
+.editor-styles-wrapper .wp-block-shortcode .components-textarea-control__input,
+.editor-styles-wrapper .wp-block-shortcode .components-base-control__field input {
+    background-color: var(--wp--preset--color--black) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    border-radius: 0 !important;
+    padding: 0.75rem !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Nuclear option - eliminate any remaining white backgrounds in shortcode blocks */
+.wp-block-shortcode *,
+.editor-styles-wrapper .wp-block-shortcode * {
+    background-color: transparent !important;
+}
+
+.wp-block-shortcode,
+.editor-styles-wrapper .wp-block-shortcode {
+    background-color: var(--wp--preset--color--dark-grey) !important;
+}
+
+.wp-block-shortcode .wp-block-shortcode__content,
+.wp-block-shortcode textarea,
+.wp-block-shortcode input,
+.editor-styles-wrapper .wp-block-shortcode .wp-block-shortcode__content,
+.editor-styles-wrapper .wp-block-shortcode textarea,
+.editor-styles-wrapper .wp-block-shortcode input {
+    background-color: var(--wp--preset--color--black) !important;
+}
+
+/* GBBS Pro Menu Bar */
+.gbbs-pro-menu-bar {
+    background-color: var(--wp--preset--color--dark-grey);
+    border-bottom: 1px solid var(--wp--preset--color--light-green);
+    padding: 0.5rem;
+    margin: 0 0 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii-80);
+    font-size: 12px;
+    color: var(--wp--preset--color--light-green);
+}
+
+/* GBBS Pro Colorful Boxes */
+.gbbs-pro-colorful-box {
+    border: 2px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: var(--wp--preset--color--black);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.gbbs-pro-colorful-box.red {
+    border-color: #E31E60;
+    background-color: rgba(227, 30, 96, 0.1);
+}
+
+.gbbs-pro-colorful-box.blue {
+    border-color: #14CFFD;
+    background-color: rgba(20, 207, 253, 0.1);
+}
+
+.gbbs-pro-colorful-box.purple {
+    border-color: #FF44FD;
+    background-color: rgba(255, 68, 253, 0.1);
+}
+
+.gbbs-pro-colorful-box.orange {
+    border-color: #FF6A3C;
+    background-color: rgba(255, 106, 60, 0.1);
+}
+
+.gbbs-pro-colorful-box.yellow {
+    border-color: #D0DD8D;
+    background-color: rgba(208, 221, 141, 0.1);
+}
+
+/* Color utility classes */
+.gbbs-pro-color-red { color: #E31E60 !important; }
+.gbbs-pro-color-blue { color: #14CFFD !important; }
+.gbbs-pro-color-purple { color: #FF44FD !important; }
+.gbbs-pro-color-orange { color: #FF6A3C !important; }
+.gbbs-pro-color-yellow { color: #D0DD8D !important; }
+.gbbs-pro-color-pink { color: #FFA0D0 !important; }
+.gbbs-pro-color-aqua { color: #72FFD0 !important; }
+.gbbs-pro-color-green { color: #14F53C !important; }
+.gbbs-pro-color-dark-green { color: #00A360 !important; }
+
+/* Background color utilities */
+.gbbs-pro-bg-red { background-color: #E31E60 !important; }
+.gbbs-pro-bg-blue { background-color: #14CFFD !important; }
+.gbbs-pro-bg-purple { background-color: #FF44FD !important; }
+.gbbs-pro-bg-orange { background-color: #FF6A3C !important; }
+.gbbs-pro-bg-yellow { background-color: #D0DD8D !important; }
+.gbbs-pro-bg-pink { background-color: #FFA0D0 !important; }
+.gbbs-pro-bg-aqua { background-color: #72FFD0 !important; }
+.gbbs-pro-bg-green { background-color: #14F53C !important; }
+
+/* Border color utilities */
+.gbbs-pro-border-red { border-color: #E31E60 !important; }
+.gbbs-pro-border-blue { border-color: #14CFFD !important; }
+.gbbs-pro-border-purple { border-color: #FF44FD !important; }
+.gbbs-pro-border-orange { border-color: #FF6A3C !important; }
+.gbbs-pro-border-yellow { border-color: #D0DD8D !important; }
+.gbbs-pro-border-pink { border-color: #FFA0D0 !important; }
+.gbbs-pro-border-aqua { border-color: #72FFD0 !important; }
+.gbbs-pro-border-green { border-color: #14F53C !important; }
+
+/* Highlight classes */
+.gbbs-pro-highlight-red {
+    background-color: #E31E60;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.gbbs-pro-highlight-blue {
+    background-color: #14CFFD;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.gbbs-pro-highlight-yellow {
+    background-color: #D0DD8D;
+    color: #000000;
+    padding: 2px 4px;
+}
+
+.gbbs-pro-highlight-purple {
+    background-color: #FF44FD;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.gbbs-pro-highlight-green {
+    background-color: #14F53C;
+    color: #000000;
+    padding: 2px 4px;
+}
+
+/* ============================================
+   TERMINAL CURSOR EFFECT
+   ============================================ */
+
+.gbbs-pro-cursor::after {
+    content: "_";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ============================================
+   GBBS PRO SPINNING CURSOR
+   ============================================ */
+
+.gbbs-pro-spinner::after {
+    content: "|";
+    animation: gbbs-pro-spin 1s linear infinite;
+    color: var(--wp--preset--color--light-green);
+}
+
+@keyframes gbbs-pro-spin {
+    0% { content: "|"; }
+    25% { content: "/"; }
+    50% { content: "-"; }
+    75% { content: "\\"; }
+    100% { content: "|"; }
+}
+
+/* ============================================
+   GBBS PRO PROGRESS BAR
+   ============================================ */
+
+.gbbs-pro-progress {
+    background: var(--wp--preset--color--black);
+    border: 1px solid var(--wp--preset--color--light-green);
+    padding: 2px;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    margin: 1rem 0;
+}
+
+.gbbs-pro-progress-bar {
+    background: var(--wp--preset--color--light-green);
+    height: 20px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.gbbs-pro-progress-text {
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* ============================================
+   LOGIN/LOGOUT BLOCK STYLES
+   ============================================ */
+
+/* Add ">" prefix to loginout block */
+.wp-block-loginout::before {
+    content: "> ";
+    color: var(--wp--preset--color--light-green);
+}
+
+/* More specific: only in sidebar context */
+.gbbs-pro-sidebar .wp-block-loginout::before {
+    content: "> ";
+    color: var(--wp--preset--color--light-green);
+}
+
+/* ============================================
+   GBBS PRO POST ITEMS
+   ============================================ */
+
+.gbbs-pro-post-item {
+    background-color: var(--wp--preset--color--black);
+    border: 1px solid var(--wp--preset--color--light-green);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gbbs-pro-post-item:hover {
+    border-color: var(--wp--preset--color--yellow);
+    box-shadow: 0 0 10px rgba(20, 245, 60, 0.3);
+}
+
+.gbbs-pro-post-item .wp-block-post-title {
+    color: var(--wp--preset--color--light-green) !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.gbbs-pro-post-item .wp-block-post-title a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.gbbs-pro-post-item .wp-block-post-title a:hover {
+    color: var(--wp--preset--color--yellow) !important;
+}
+
+
+/* ============================================
+   SIDEBAR WIDGET STYLES
+   ============================================ */
+
+.gbbs-pro-sidebar {
+    position: sticky;
+    top: 2rem;
+    font-family: "Apple II 80", monospace !important;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.gbbs-pro-sidebar * {
+    font-family: "Apple II 80", monospace !important;
+}
+
+.gbbs-pro-widget {
+    background-color: var(--wp--preset--color--black);
+    border: 1px solid var(--wp--preset--color--dark-green);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gbbs-pro-widget:last-child {
+    margin-bottom: 0;
+}
+
+.gbbs-pro-widget-title {
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 16px;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--wp--preset--color--dark-green);
+    text-transform: uppercase;
+}
+
+/* Widget list styles */
+.gbbs-pro-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gbbs-pro-sidebar li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(20, 245, 60, 0.1);
+}
+
+.gbbs-pro-sidebar li:last-child {
+    border-bottom: none;
+}
+
+.gbbs-pro-sidebar li::before {
+    content: "> ";
+    color: var(--wp--preset--color--light-green);
+}
+
+/* Ensure all list items in sidebar get the > prefix */
+.gbbs-pro-sidebar .wp-block-latest-posts li::before,
+.gbbs-pro-sidebar .wp-block-categories li::before,
+.gbbs-pro-sidebar .wp-block-archives li::before {
+    content: "> ";
+    color: var(--wp--preset--color--light-green);
+}
+
+/* Target any list items that might be nested */
+.gbbs-pro-sidebar ul li::before,
+.gbbs-pro-sidebar ol li::before {
+    content: "> ";
+    color: var(--wp--preset--color--light-green);
+}
+
+.gbbs-pro-widget a {
+    color: var(--wp--preset--color--light-green);
+    text-decoration: none;
+}
+
+.gbbs-pro-widget a:hover {
+    color: var(--wp--preset--color--yellow);
+    text-decoration: underline;
+}
+
+/* Search block container - remove all default borders */
+.wp-block-search,
+.gbbs-pro-sidebar .wp-block-search,
+.apple-ii-sidebar .wp-block-search {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove borders from widget containers that hold search */
+.gbbs-pro-sidebar .gbbs-pro-widget:has(.wp-block-search),
+.apple-ii-sidebar .gbbs-pro-widget:has(.wp-block-search),
+.gbbs-pro-widget:has(.wp-block-search),
+/* Fallback for browsers that don't support :has() */
+.gbbs-pro-sidebar .wp-block-group:has(.wp-block-search),
+.apple-ii-sidebar .wp-block-group:has(.wp-block-search),
+.gbbs-pro-sidebar .wp-block-group .wp-block-search,
+.apple-ii-sidebar .wp-block-group .wp-block-search {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Specifically target search widgets */
+.gbbs-pro-sidebar .wp-block-search,
+.apple-ii-sidebar .wp-block-search {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove any borders from parent containers of search */
+.gbbs-pro-sidebar .wp-block-group:has(.wp-block-search),
+.apple-ii-sidebar .wp-block-group:has(.wp-block-search),
+.gbbs-pro-sidebar .wp-block-group .wp-block-search,
+.apple-ii-sidebar .wp-block-group .wp-block-search,
+/* Target the widget wrapper that contains search */
+.gbbs-pro-sidebar .wp-block-group,
+.apple-ii-sidebar .wp-block-group {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Nuclear option - remove ALL borders from search-related elements */
+.gbbs-pro-sidebar *:has(.wp-block-search),
+.apple-ii-sidebar *:has(.wp-block-search),
+.gbbs-pro-sidebar .wp-block-search *,
+.apple-ii-sidebar .wp-block-search *,
+.wp-block-search * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* But keep the input border */
+.gbbs-pro-sidebar .wp-block-search__input,
+.apple-ii-sidebar .wp-block-search__input,
+.wp-block-search__input {
+    border: 1px solid #14F53C !important;
+}
+
+/* Search box styling - minimal single border */
+.gbbs-pro-sidebar .wp-block-search__input,
+.apple-ii-sidebar .wp-block-search__input,
+.wp-block-search__input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: "Apple II 80", monospace !important;
+    border: 1px solid #14F53C !important;
+    background-color: #000000 !important;
+    color: #14F53C !important;
+    padding: 8px 12px !important;
+    font-size: 16px !important;
+    outline: none !important;
+    display: block !important;
+    margin: 0 !important;
+}
+
+.gbbs-pro-sidebar .wp-block-search__input:focus,
+.apple-ii-sidebar .wp-block-search__input:focus,
+.wp-block-search__input:focus {
+    outline: none !important;
+    border-color: #D0DD8D !important;
+    box-shadow: none !important;
+}
+
+/* Minimal hover effect */
+.gbbs-pro-sidebar .wp-block-search__input:hover,
+.apple-ii-sidebar .wp-block-search__input:hover,
+.wp-block-search__input:hover {
+    box-shadow: none !important;
+}
+
+/* Style the placeholder text */
+.gbbs-pro-sidebar .wp-block-search__input::placeholder,
+.apple-ii-sidebar .wp-block-search__input::placeholder,
+.wp-block-search__input::placeholder {
+    color: #14F53C !important;
+    opacity: 0.7 !important;
+    font-family: "Apple II 80", monospace !important;
+}
+
+.gbbs-pro-sidebar .wp-block-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure search form doesn't overflow */
+.gbbs-pro-sidebar .wp-block-search__inside-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+/* Search loading states */
+.wp-block-search__button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.wp-block-search__button .gbbs-pro-spinner {
+    color: var(--wp--preset--color--black);
+    font-size: 12px;
+}
+
+/* Responsive sidebar layout */
+.with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.gbbs-pro-sidebar,
+.apple-ii-sidebar {
+    min-width: 0;
+    max-width: 280px;
+}
+
+/* Desktop search box - simplified for buttonless design */
+@media (min-width: 993px) {
+    .gbbs-pro-sidebar .wp-block-search__input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Force search box to stay within sidebar bounds */
+.apple-ii-sidebar .wp-block-search {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.apple-ii-sidebar .wp-block-search__inside-wrapper {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 992px) {
+    .with-sidebar {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gbbs-pro-sidebar,
+    .apple-ii-sidebar {
+        position: relative;
+        top: auto;
+        margin-top: 2rem;
+        max-width: 100%;
+    }
+}
+
+/* ============================================
+   FILTER & SORT CONTROLS
+   ============================================ */
+
+.gbbs-pro-filter-controls {
+    border: 1px solid var(--wp--preset--color--light-green);
+    border-style: dashed;
+    margin: 2rem 0;
+}
+
+.gbbs-pro-filter-controls .apple-ii-widget-title {
+    margin-bottom: 1rem !important;
+    border-bottom: 1px dashed var(--wp--preset--color--light-green) !important;
+    padding-bottom: 0.5rem;
+}
+
+.gbbs-pro-filter-controls .wp-block-group {
+    gap: 1rem;
+}
+
+.gbbs-pro-filter-label {
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+.gbbs-pro-filter-select,
+.gbbs-pro-filter-input {
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    background: var(--wp--preset--color--black) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 12px !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    transition: all 0.2s ease;
+}
+
+.gbbs-pro-filter-select:hover,
+.gbbs-pro-filter-input:hover,
+.gbbs-pro-filter-select:focus,
+.gbbs-pro-filter-input:focus {
+    border-color: var(--wp--preset--color--white) !important;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+}
+
+.gbbs-pro-filter-select option {
+    background: var(--wp--preset--color--black) !important;
+    color: var(--wp--preset--color--light-green) !important;
+}
+
+.gbbs-pro-filter-input::placeholder {
+    color: var(--wp--preset--color--light-green) !important;
+    opacity: 0.7;
+}
+
+/* Responsive adjustments for filter controls */
+@media (max-width: 768px) {
+    .gbbs-pro-filter-controls .wp-block-group {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    .gbbs-pro-filter-controls .wp-block-group > .wp-block-group {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .gbbs-pro-filter-input {
+        min-width: 150px !important;
+        flex: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .gbbs-pro-filter-controls .wp-block-group > .wp-block-group {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+    }
+    
+    .gbbs-pro-filter-label {
+        margin-right: 0 !important;
+        margin-bottom: 0.25rem !important;
+    }
+}

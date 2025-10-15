@@ -1,0 +1,81 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"2rem","bottom":"2rem"}}},"layout":{"type":"constrained","contentSize":"95vw","wideSize":"95vw"}} -->
+<div class="wp-block-group" style="margin-top:2rem;margin-bottom:2rem">
+
+	<!-- wp:group {"className":"gbbs-pro-page-header","layout":{"type":"constrained","contentSize":"95vw","wideSize":"95vw"}} -->
+	<div class="wp-block-group gbbs-pro-page-header">
+		<!-- wp:paragraph {"align":"center","className":"gbbs-pro-header-top-dash","style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)","fontSize":"20px"}}} -->
+		<p class="has-text-align-center gbbs-pro-header-top-dash" style="font-family:var(--wp--preset--font-family--apple-ii);font-size:20px">--------------------------</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:post-title {"textAlign":"center","level":1,"className":"gbbs-pro-page-title","style":{"typography":{"fontSize":"20px"}},"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)"} /-->
+
+		<!-- wp:paragraph {"align":"center","className":"gbbs-pro-header-bottom-dash","style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)","fontSize":"20px"}}} -->
+		<p class="has-text-align-center gbbs-pro-header-bottom-dash" style="font-family:var(--wp--preset--font-family--apple-ii);font-size:20px">--------------------------</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:post-content {"style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)","fontSize":"14px"}},"layout":{"type":"constrained","contentSize":"95vw","wideSize":"95vw"}} /-->
+
+	<!-- wp:html -->
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		function adjustDashLength() {
+			const pageHeaders = document.querySelectorAll(".gbbs-pro-page-header");
+			
+			pageHeaders.forEach(function(header, index) {
+				const title = header.querySelector(".gbbs-pro-page-title");
+				const topDash = header.querySelector(".gbbs-pro-header-top-dash");
+				const bottomDash = header.querySelector(".gbbs-pro-header-bottom-dash");
+				
+				if (title && topDash && bottomDash) {
+					const titleText = title.textContent.trim();
+					
+					// Check if title wraps by measuring its actual rendered width
+					const titleRect = title.getBoundingClientRect();
+					const titleComputedStyle = window.getComputedStyle(title);
+					const titleFontSize = parseFloat(titleComputedStyle.fontSize);
+					const titleLineHeight = parseFloat(titleComputedStyle.lineHeight);
+					
+					// Calculate how many characters fit on one line
+					const charsPerLine = Math.floor(titleRect.width / (titleFontSize * 0.6)); // Approximate char width
+					
+					// If title is longer than what fits on one line, it's wrapped
+					const isWrapped = titleText.length > charsPerLine;
+					
+					let dashCount;
+					if (isWrapped) {
+						// For wrapped titles, use the width of the title container
+						// This will match the visual width of the longest line
+						const containerWidth = title.parentElement.getBoundingClientRect().width;
+						const dashWidth = titleFontSize * 0.6; // Approximate dash width
+						dashCount = Math.floor(containerWidth / dashWidth);
+					} else {
+						// For single-line titles, use the bracketed length
+						const bracketedLength = titleText.length + 4;
+						dashCount = Math.min(60, bracketedLength);
+					}
+					
+					const dashString = "-".repeat(dashCount);
+					
+					topDash.textContent = dashString;
+					bottomDash.textContent = dashString;
+				}
+			});
+		}
+		
+		adjustDashLength();
+		
+		window.addEventListener("resize", function() {
+			setTimeout(adjustDashLength, 100);
+		});
+	});
+	</script>
+	<!-- /wp:html -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

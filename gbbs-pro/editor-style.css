@@ -1,0 +1,878 @@
+/* ============================================
+   APPLE II THEME EDITOR STYLES
+   ============================================ */
+
+/* Font Face Declarations for Editor */
+@font-face {
+    font-family: 'Apple II';
+    src: url('fonts/PrintChar21.woff2') format('woff2'),
+         url('fonts/PrintChar21.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Apple II 80";
+    src: url('fonts/PRNumber3.woff2') format('woff2'),
+         url('fonts/PRNumber3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CSS Custom Properties for editor consistency - using theme.json variables */
+:root {
+    --apple-ii-border: 1px solid var(--wp--preset--color--light-green);
+    --apple-ii-transition: all 0.3s ease;
+    --apple-ii-spacing-sm: 0.5rem;
+    --apple-ii-spacing-md: 1rem;
+}
+
+/* ============================================
+   EDITOR WRAPPER STYLES
+   ============================================ */
+
+.editor-styles-wrapper {
+    font-family: "Apple II", monospace !important;
+    background-color: #000000 !important;
+    color: #14F53C !important;
+    line-height: 1.5;
+}
+
+/* Apply Apple II font to all editor elements */
+.editor-styles-wrapper * {
+    font-family: "Apple II", monospace !important;
+}
+
+/* ============================================
+   TYPOGRAPHY IN EDITOR
+   ============================================ */
+
+/* Headings in editor */
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--yellow);
+    margin-bottom: var(--apple-ii-spacing-sm);
+}
+
+/* Paragraphs and text in editor */
+.editor-styles-wrapper p,
+.editor-styles-wrapper div,
+.editor-styles-wrapper span,
+.editor-styles-wrapper li {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+/* Links in editor */
+.editor-styles-wrapper a {
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    text-decoration: underline;
+    transition: var(--apple-ii-transition);
+}
+
+.editor-styles-wrapper a:hover,
+.editor-styles-wrapper a:focus {
+    color: var(--wp--preset--color--yellow);
+}
+
+/* ============================================
+   BLOCK EDITOR SPECIFIC STYLES
+   ============================================ */
+
+.wp-block {
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.wp-block[data-type="core/paragraph"] {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+.wp-block[data-type="core/heading"] {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+/* Site title and tagline in editor */
+.wp-block-site-title {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+.wp-block-site-tagline {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--dark-green);
+}
+
+/* ============================================
+   FORM ELEMENTS IN EDITOR
+   ============================================ */
+
+/* Buttons in editor */
+.wp-block-button__link {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+    border: var(--apple-ii-border);
+    transition: var(--apple-ii-transition);
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+    background-color: var(--wp--preset--color--yellow);
+}
+
+/* ============================================
+   CAPTIONS IN EDITOR
+   ============================================ */
+
+.wp-block-image figcaption,
+.wp-block-gallery figcaption,
+.wp-block-video figcaption,
+.wp-block-audio figcaption,
+.wp-block-embed figcaption,
+figcaption {
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    color: var(--wp--preset--color--dark-green) !important;
+    font-size: 12px !important;
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================
+   TABLES IN EDITOR
+   ============================================ */
+
+.wp-block-table {
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.wp-block-table th,
+.wp-block-table td {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+    border: var(--apple-ii-border);
+    padding: var(--apple-ii-spacing-sm);
+}
+
+.wp-block-table th {
+    background-color: rgba(51, 255, 51, 0.1);
+    font-weight: bold;
+}
+
+/* ============================================
+   CODE BLOCKS IN EDITOR
+   ============================================ */
+
+/* Inline code elements in editor */
+code {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 0 !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+/* WordPress code block wrapper in editor */
+.wp-block-code {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+/* Code inside WordPress code blocks in editor */
+.wp-block-code code {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    background-color: var(--wp--preset--color--dark-grey) !important;
+    border: 1px solid var(--wp--preset--color--light-green) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    padding: var(--apple-ii-spacing-md) !important;
+    border-radius: 0 !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+}
+
+/* Preformatted text in editor - use normal post colors */
+.wp-block-code pre,
+pre {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--wp--preset--color--light-green) !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow-x: auto !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+}
+
+/* ============================================
+   LISTS IN EDITOR
+   ============================================ */
+
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+.editor-styles-wrapper li {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+/* ============================================
+   SEARCH FORM IN EDITOR
+   ============================================ */
+
+.wp-block-search__input {
+    background-color: var(--wp--preset--color--black);
+    border: var(--apple-ii-border);
+    color: var(--wp--preset--color--light-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.wp-block-search__button {
+    background-color: var(--wp--preset--color--light-green);
+    color: var(--wp--preset--color--black);
+    border: var(--apple-ii-border);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+/* ============================================
+   QUOTES IN EDITOR
+   ============================================ */
+
+.wp-block-quote {
+    border-left: 4px solid var(--wp--preset--color--light-green);
+    padding-left: var(--apple-ii-spacing-md);
+    font-family: var(--wp--preset--font-family--apple-ii);
+    color: var(--wp--preset--color--light-green);
+}
+
+.wp-block-quote cite {
+    color: var(--wp--preset--color--dark-green);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+
+/* ============================================
+   ACCESSIBILITY IN EDITOR
+   ============================================ */
+
+/* Focus styles for editor */
+.editor-styles-wrapper a:focus,
+.editor-styles-wrapper button:focus,
+.editor-styles-wrapper input:focus,
+.editor-styles-wrapper textarea:focus,
+.editor-styles-wrapper select:focus {
+    outline: 2px solid var(--wp--preset--color--yellow);
+    outline-offset: 2px;
+}
+/* ============================================
+   COMMENTS BLOCKS IN EDITOR
+   ============================================ */
+
+/* Comments area wrapper */
+.editor-styles-wrapper .wp-block-comments {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* Comments title (e.g., "3 responses to Post Title") */
+.editor-styles-wrapper .wp-block-comments-title {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 20px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Individual comment items */
+.editor-styles-wrapper .comment-item {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    border: 1px solid #14F53C !important;
+    margin-bottom: 1rem !important;
+    padding: 15px !important;
+}
+
+/* Comment author name */
+.editor-styles-wrapper .wp-block-comment-author-name {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+/* Comment date */
+.editor-styles-wrapper .wp-block-comment-date {
+    font-family: "Apple II", monospace !important;
+    color: #00A360 !important;
+    font-size: 12px !important;
+}
+
+/* Comment edit link */
+.editor-styles-wrapper .wp-block-comment-edit-link {
+    font-family: "Apple II", monospace !important;
+    color: #00A360 !important;
+    font-size: 12px !important;
+}
+
+/* Comment content */
+.editor-styles-wrapper .wp-block-comment-content {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 14px !important;
+    margin: 0.5rem 0 !important;
+}
+
+/* Comment reply link */
+.editor-styles-wrapper .wp-block-comment-reply-link {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 12px !important;
+    text-decoration: underline !important;
+}
+
+/* Comments pagination */
+.editor-styles-wrapper .wp-block-comments-pagination {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    margin-top: 2rem !important;
+}
+
+.editor-styles-wrapper .wp-block-comments-pagination-previous,
+.editor-styles-wrapper .wp-block-comments-pagination-next,
+.editor-styles-wrapper .wp-block-comments-pagination-numbers {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* Comments form */
+.editor-styles-wrapper .wp-block-post-comments-form {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    margin-top: 2rem !important;
+    padding: 1rem !important;
+    border: 1px solid #14F53C !important;
+}
+
+/* Comments form title */
+.editor-styles-wrapper .wp-block-post-comments-form .wp-block-heading {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 18px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Comments form fields */
+.editor-styles-wrapper .wp-block-post-comments-form input,
+.editor-styles-wrapper .wp-block-post-comments-form textarea {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    background-color: #000000 !important;
+    border: 1px solid #14F53C !important;
+    padding: 0.5rem !important;
+}
+
+/* Comments form labels */
+.editor-styles-wrapper .wp-block-post-comments-form label {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+    font-size: 14px !important;
+    display: block !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* Comments form submit button */
+.editor-styles-wrapper .wp-block-post-comments-form .wp-block-button__link {
+    font-family: "Apple II", monospace !important;
+    background-color: #14F53C !important;
+    color: #000000 !important;
+    border: 1px solid #14F53C !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 14px !important;
+}
+
+/* Additional targeting for comments in editor */
+.editor-styles-wrapper [data-type="core/comments"] {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+.editor-styles-wrapper [data-type="core/comments"] * {
+    font-family: "Apple II", monospace !important;
+}
+
+/* Target any heading within comments */
+.editor-styles-wrapper .wp-block-comments h2,
+.editor-styles-wrapper .wp-block-comments h3,
+.editor-styles-wrapper .wp-block-comments h4,
+.editor-styles-wrapper .wp-block-comments h5,
+.editor-styles-wrapper .wp-block-comments h6 {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* Target any paragraph within comments */
+.editor-styles-wrapper .wp-block-comments p {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* Target any span within comments */
+.editor-styles-wrapper .wp-block-comments span {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* Target any div within comments */
+.editor-styles-wrapper .wp-block-comments div {
+    font-family: "Apple II", monospace !important;
+    color: #14F53C !important;
+}
+
+/* ============================================
+   SIDEBAR STYLES IN EDITOR
+   ============================================ */
+
+/* Apple II Sidebar in editor */
+.editor-styles-wrapper .apple-ii-sidebar {
+    font-family: "Apple II 80", monospace !important;
+}
+
+.editor-styles-wrapper .apple-ii-sidebar * {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar headings */
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-heading {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar lists */
+.editor-styles-wrapper .apple-ii-sidebar ul,
+.editor-styles-wrapper .apple-ii-sidebar ol {
+    font-family: "Apple II 80", monospace !important;
+}
+
+.editor-styles-wrapper .apple-ii-sidebar li {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar search */
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-search__input {
+    font-family: "Apple II 80", monospace !important;
+}
+
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-search__button {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar latest posts */
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-latest-posts {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar categories */
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-categories {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* Sidebar archives */
+.editor-styles-wrapper .apple-ii-sidebar .wp-block-archives {
+    font-family: "Apple II 80", monospace !important;
+}
+
+/* ============================================
+   ACCESSIBILITY IN EDITOR
+   ============================================ */
+
+/* Focus styles for editor */
+.editor-styles-wrapper a:focus,
+.editor-styles-wrapper button:focus,
+.editor-styles-wrapper input:focus,
+.editor-styles-wrapper textarea:focus,
+.editor-styles-wrapper select:focus {
+    outline: 2px solid var(--wp--preset--color--yellow);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE EDITOR STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .editor-styles-wrapper {
+        padding: var(--apple-ii-spacing-sm);
+    }
+
+    .wp-block-site-title {
+        font-size: 18px;
+    }
+
+    .wp-block-site-tagline {
+        font-size: 12px;
+    }
+
+    /* Mobile editor optimizations */
+    .editor-styles-wrapper .with-sidebar {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .editor-styles-wrapper .apple-ii-sidebar {
+        position: relative !important;
+        top: auto !important;
+        margin-top: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    .editor-styles-wrapper .apple-ii-post-item {
+        padding: 1rem !important;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .editor-styles-wrapper .wp-block-site-title {
+        font-size: 16px;
+    }
+
+    .editor-styles-wrapper .wp-block-post-title {
+        font-size: 18px !important;
+    }
+
+    .editor-styles-wrapper .apple-ii-post-item {
+        padding: 0.75rem !important;
+    }
+
+}
+
+/* ============================================
+   SINGLE POST TEMPLATE IN EDITOR
+   ============================================ */
+
+/* Force proper grid layout in editor */
+.editor-styles-wrapper .with-sidebar {
+    display: grid !important;
+    grid-template-columns: 1fr 280px !important;
+    gap: 2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.editor-styles-wrapper main#main {
+    min-width: 0 !important;
+    max-width: 800px !important;
+    width: 100% !important;
+    grid-column: 1 !important;
+}
+
+.editor-styles-wrapper .apple-ii-sidebar {
+    grid-column: 2 !important;
+    width: 280px !important;
+    max-width: 280px !important;
+}
+
+/* Fix post title display in editor */
+.editor-styles-wrapper .wp-block-post-title {
+    text-align: center !important;
+    font-size: 36px !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    color: var(--wp--preset--color--light-green) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+}
+
+/* Fix post title in GBBS message header context - should be small like other message elements */
+.editor-styles-wrapper .gbbs-pro-message-line .wp-block-post-title {
+    font-size: 14px !important;
+    text-align: left !important;
+    display: inline !important;
+    width: auto !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Responsive styles for GBBS message header in editor */
+@media (max-width: 768px) {
+    .editor-styles-wrapper .gbbs-pro-message-line .wp-block-post-title {
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .editor-styles-wrapper .gbbs-pro-message-line .wp-block-post-title {
+        font-size: 11px !important;
+    }
+}
+
+/* Fix post meta in editor */
+.editor-styles-wrapper .wp-block-post-date,
+.editor-styles-wrapper .wp-block-post-author,
+.editor-styles-wrapper .wp-block-post-terms {
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+    font-size: 14px !important;
+    color: var(--wp--preset--color--light-green) !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+}
+
+/* Fix post meta container in editor */
+.editor-styles-wrapper .wp-block-group:has(.wp-block-post-date) {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* Fix post content in editor */
+.editor-styles-wrapper .wp-block-post-content {
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 14px;
+    color: var(--wp--preset--color--light-green);
+    line-height: 1.4;
+}
+
+/* Fix post navigation in editor */
+.editor-styles-wrapper .wp-block-post-navigation-link a {
+    color: var(--wp--preset--color--light-green) !important;
+    text-decoration: none !important;
+    padding: 8px 12px !important;
+    border: none !important;
+    background-color: var(--wp--preset--color--black) !important;
+    display: inline-block !important;
+    font-family: var(--wp--preset--font-family--apple-ii) !important;
+}
+
+.editor-styles-wrapper .wp-block-post-navigation-link a:hover {
+    background-color: var(--wp--preset--color--light-green) !important;
+    color: var(--wp--preset--color--black) !important;
+}
+
+/* Fix post navigation container in editor */
+.editor-styles-wrapper .wp-block-group:has(.wp-block-post-navigation-link) {
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+}
+
+/* Fix separators in editor */
+.editor-styles-wrapper .apple-ii-separator {
+    text-align: center;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    font-size: 14px;
+    color: var(--wp--preset--color--light-green);
+    margin: 1rem 0;
+}
+
+/* Responsive editor layout */
+@media (max-width: 992px) {
+    .editor-styles-wrapper .with-sidebar {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .editor-styles-wrapper .apple-ii-sidebar {
+        grid-column: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 2rem !important;
+    }
+
+    .editor-styles-wrapper main#main {
+        grid-column: 1 !important;
+        order: 1 !important;
+    }
+}
+
+/* ============================================
+   APPLE II UTILITY CLASSES IN EDITOR
+   ============================================ */
+
+/* Apple II Terminal Window */
+.editor-styles-wrapper .apple-ii-terminal-window {
+    background-color: var(--wp--preset--color--black);
+    border: 2px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    position: relative;
+}
+
+.editor-styles-wrapper .apple-ii-terminal-window::before {
+    content: "APPLE II TERMINAL";
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background-color: var(--wp--preset--color--black);
+    color: var(--wp--preset--color--light-green);
+    padding: 0 8px;
+    font-size: 10px;
+    font-family: var(--wp--preset--font-family--apple-ii-80);
+}
+
+/* Apple II Command Prompt */
+.editor-styles-wrapper .apple-ii-command-prompt::before {
+    content: "] ";
+    color: var(--wp--preset--color--light-green);
+    font-weight: bold;
+}
+
+/* Apple II Screen Layout */
+.editor-styles-wrapper .apple-ii-screen {
+    background-color: var(--wp--preset--color--black);
+    border: 3px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii);
+    min-height: 200px;
+}
+
+/* Apple II Menu Bar */
+.editor-styles-wrapper .apple-ii-menu-bar {
+    background-color: var(--wp--preset--color--dark-grey);
+    border-bottom: 1px solid var(--wp--preset--color--light-green);
+    padding: 0.5rem;
+    margin: 0 0 1rem 0;
+    font-family: var(--wp--preset--font-family--apple-ii-80);
+    font-size: 12px;
+    color: var(--wp--preset--color--light-green);
+}
+
+/* Apple II Colorful Boxes */
+.editor-styles-wrapper .apple-ii-colorful-box {
+    border: 2px solid var(--wp--preset--color--light-green);
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: var(--wp--preset--color--black);
+    font-family: var(--wp--preset--font-family--apple-ii);
+}
+
+.editor-styles-wrapper .apple-ii-colorful-box.red {
+    border-color: #E31E60;
+    background-color: rgba(227, 30, 96, 0.1);
+}
+
+.editor-styles-wrapper .apple-ii-colorful-box.blue {
+    border-color: #14CFFD;
+    background-color: rgba(20, 207, 253, 0.1);
+}
+
+.editor-styles-wrapper .apple-ii-colorful-box.purple {
+    border-color: #FF44FD;
+    background-color: rgba(255, 68, 253, 0.1);
+}
+
+.editor-styles-wrapper .apple-ii-colorful-box.orange {
+    border-color: #FF6A3C;
+    background-color: rgba(255, 106, 60, 0.1);
+}
+
+.editor-styles-wrapper .apple-ii-colorful-box.yellow {
+    border-color: #D0DD8D;
+    background-color: rgba(208, 221, 141, 0.1);
+}
+
+/* Color utility classes for editor */
+.editor-styles-wrapper .apple-ii-color-red { color: #E31E60 !important; }
+.editor-styles-wrapper .apple-ii-color-blue { color: #14CFFD !important; }
+.editor-styles-wrapper .apple-ii-color-purple { color: #FF44FD !important; }
+.editor-styles-wrapper .apple-ii-color-orange { color: #FF6A3C !important; }
+.editor-styles-wrapper .apple-ii-color-yellow { color: #D0DD8D !important; }
+.editor-styles-wrapper .apple-ii-color-pink { color: #FFA0D0 !important; }
+.editor-styles-wrapper .apple-ii-color-aqua { color: #72FFD0 !important; }
+.editor-styles-wrapper .apple-ii-color-green { color: #14F53C !important; }
+.editor-styles-wrapper .apple-ii-color-dark-green { color: #00A360 !important; }
+
+/* Background color utilities for editor */
+.editor-styles-wrapper .apple-ii-bg-red { background-color: #E31E60 !important; }
+.editor-styles-wrapper .apple-ii-bg-blue { background-color: #14CFFD !important; }
+.editor-styles-wrapper .apple-ii-bg-purple { background-color: #FF44FD !important; }
+.editor-styles-wrapper .apple-ii-bg-orange { background-color: #FF6A3C !important; }
+.editor-styles-wrapper .apple-ii-bg-yellow { background-color: #D0DD8D !important; }
+.editor-styles-wrapper .apple-ii-bg-pink { background-color: #FFA0D0 !important; }
+.editor-styles-wrapper .apple-ii-bg-aqua { background-color: #72FFD0 !important; }
+.editor-styles-wrapper .apple-ii-bg-green { background-color: #14F53C !important; }
+
+/* Border color utilities for editor */
+.editor-styles-wrapper .apple-ii-border-red { border-color: #E31E60 !important; }
+.editor-styles-wrapper .apple-ii-border-blue { border-color: #14CFFD !important; }
+.editor-styles-wrapper .apple-ii-border-purple { border-color: #FF44FD !important; }
+.editor-styles-wrapper .apple-ii-border-orange { border-color: #FF6A3C !important; }
+.editor-styles-wrapper .apple-ii-border-yellow { border-color: #D0DD8D !important; }
+.editor-styles-wrapper .apple-ii-border-pink { border-color: #FFA0D0 !important; }
+.editor-styles-wrapper .apple-ii-border-aqua { border-color: #72FFD0 !important; }
+.editor-styles-wrapper .apple-ii-border-green { border-color: #14F53C !important; }
+
+/* Highlight classes for editor */
+.editor-styles-wrapper .apple-ii-highlight-red {
+    background-color: #E31E60;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.editor-styles-wrapper .apple-ii-highlight-blue {
+    background-color: #14CFFD;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.editor-styles-wrapper .apple-ii-highlight-yellow {
+    background-color: #D0DD8D;
+    color: #000000;
+    padding: 2px 4px;
+}
+
+.editor-styles-wrapper .apple-ii-highlight-purple {
+    background-color: #FF44FD;
+    color: #FFFFFF;
+    padding: 2px 4px;
+}
+
+.editor-styles-wrapper .apple-ii-highlight-green {
+    background-color: #14F53C;
+    color: #000000;
+    padding: 2px 4px;
+}

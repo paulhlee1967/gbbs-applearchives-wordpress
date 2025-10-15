@@ -1,0 +1,288 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","align":"full","className":"site-header"} /-->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"2rem","bottom":"2rem"}}},"layout":{"inherit":true,"type":"constrained"}} -->
+<div class="wp-block-group" style="margin-top:2rem;margin-bottom:2rem">
+
+	<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"inherit":true,"type":"constrained"},"ariaLabel":"Main content"} -->
+	<main id="main" aria-label="Main content" class="wp-block-group" style="margin-top:0;margin-bottom:0">
+		
+		<!-- wp:group {"className":"gbbs-pro-filter-controls","style":{"spacing":{"padding":{"top":"1rem","right":"1rem","bottom":"1rem","left":"1rem"},"margin":{"top":"0","bottom":"2rem"}},"color":{"background":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dblack)"}},"layout":{"type":"constrained"}} -->
+		<div class="wp-block-group gbbs-pro-filter-controls has-background" style="background-color:var(--wp--preset--color--black);padding-top:1rem;padding-right:1rem;padding-bottom:1rem;padding-left:1rem;margin-top:0;margin-bottom:2rem">
+
+		<!-- wp:heading {"level":3,"className":"apple-ii-widget-title","style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)","fontSize":"14px","textTransform":"uppercase"},"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dlight-green)"},"spacing":{"margin":{"bottom":"1rem"}},"border":{"bottom":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dlight-green)","width":"1px","style":"dashed"}}}} -->
+		<h3 class="wp-block-heading apple-ii-widget-title has-text-color" style="border-bottom-color:var(--wp--preset--color--light-green);border-bottom-style:dashed;border-bottom-width:1px;color:var(--wp--preset--color--light-green);margin-bottom:1rem;font-family:var(--wp--preset--font-family--apple-ii);font-size:16px;text-transform:uppercase">[ FILTER & SORT ]</h3>
+		<!-- /wp:heading -->
+
+		<!-- wp:group {"style":{"spacing":{"blockGap":"1rem"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<div class="wp-block-group" style="display:flex;flex-wrap:wrap;justify-content:space-between">
+
+		<!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group" style="display:flex;flex-wrap:nowrap;align-items:center">
+
+		<!-- wp:html -->
+		<label for="category-filter" class="gbbs-pro-filter-label" style="font-family:var(--wp--preset--font-family--apple-ii);color:var(--wp--preset--color--light-green);font-size:12px;margin-right:0.5rem;">Category:</label>
+		<!-- /wp:html -->
+
+		<!-- wp:html -->
+		<select id="category-filter" class="gbbs-pro-filter-select" style="font-family:var(--wp--preset--font-family--apple-ii);background:var(--wp--preset--color--black);color:var(--wp--preset--color--light-green);border:1px solid var(--wp--preset--color--light-green);padding:0.25rem;font-size:12px;">
+		<option value="">All Categories</option>
+		</select>
+		<!-- /wp:html -->
+
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group" style="display:flex;flex-wrap:nowrap;align-items:center">
+
+		<!-- wp:html -->
+		<label for="sort-order" class="gbbs-pro-filter-label" style="font-family:var(--wp--preset--font-family--apple-ii);color:var(--wp--preset--color--light-green);font-size:12px;margin-right:0.5rem;">Sort:</label>
+		<!-- /wp:html -->
+
+		<!-- wp:html -->
+		<select id="sort-order" class="gbbs-pro-filter-select" style="font-family:var(--wp--preset--font-family--apple-ii);background:var(--wp--preset--color--black);color:var(--wp--preset--color--light-green);border:1px solid var(--wp--preset--color--light-green);padding:0.25rem;font-size:12px;">
+		<option value="date-desc">Newest First</option>
+		<option value="date-asc">Oldest First</option>
+		<option value="title-asc">Title A-Z</option>
+		<option value="title-desc">Title Z-A</option>
+		<option value="author-asc">Author A-Z</option>
+		<option value="author-desc">Author Z-A</option>
+		</select>
+		<!-- /wp:html -->
+
+		</div>
+		<!-- /wp:group -->
+
+
+		</div>
+		<!-- /wp:group -->
+
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:template-part {"slug":"loop"} /-->
+
+		<!-- wp:query-pagination {"style":{"spacing":{"margin":{"top":"3rem"}}}} -->
+		<!-- wp:query-pagination-previous {"label":"\u003c- PREVIOUS","style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)"}}} /-->
+
+		<!-- wp:query-pagination-numbers {"style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)"}}} /-->
+
+		<!-- wp:query-pagination-next {"label":"NEXT -\u003e","style":{"typography":{"fontFamily":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dfont-family\u002d\u002dapple-ii)"}}} /-->
+		<!-- /wp:query-pagination -->
+	</main>
+	<!-- /wp:group -->
+
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer","align":"full","className":"site-footer"} /-->
+
+<!-- wp:html -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	// Filter and Sort functionality
+	function initializeFilters() {
+		const categoryFilter = document.getElementById('category-filter');
+		const sortOrder = document.getElementById('sort-order');
+		const queryBlock = document.querySelector('.wp-block-query');
+		
+		if (!queryBlock) return;
+		
+		// Store all original posts - this never changes
+		const originalPosts = Array.from(queryBlock.querySelectorAll('.wp-block-post-template > *'));
+		console.log('Original posts stored:', originalPosts.length);
+		
+		// Populate category filter
+		function populateCategories() {
+			const categoriesMap = new Map();
+			const postTemplates = queryBlock.querySelectorAll('.wp-block-post-template > *');
+			
+			postTemplates.forEach(post => {
+				// Look for category links first
+				const categoryLinks = post.querySelectorAll('a[href*="/category/"]');
+				
+				if (categoryLinks.length > 0) {
+					categoryLinks.forEach(link => {
+						const categoryName = link.textContent.trim();
+						const categorySlug = link.href.split('/category/')[1].split('/')[0];
+						categoriesMap.set(categorySlug, categoryName);
+					});
+				} else {
+					// Fallback: extract from class names
+					const classList = post.className.split(' ');
+					const categoryClasses = classList.filter(cls => cls.startsWith('category-'));
+					
+					categoryClasses.forEach(categoryClass => {
+						const categorySlug = categoryClass.replace('category-', '');
+						// Convert slug to readable name
+						const categoryName = categorySlug.split('-').map(word => 
+							word.charAt(0).toUpperCase() + word.slice(1)
+						).join(' ');
+						categoriesMap.set(categorySlug, categoryName);
+					});
+				}
+			});
+			
+			// Clear existing options except "All Categories"
+			categoryFilter.innerHTML = '<option value="">All Categories</option>';
+			
+			// Add category options (sorted alphabetically)
+			const sortedCategories = Array.from(categoriesMap.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+			sortedCategories.forEach(([slug, name]) => {
+				const option = document.createElement('option');
+				option.value = slug;
+				option.textContent = name;
+				categoryFilter.appendChild(option);
+			});
+		}
+		
+		// Filter and sort posts
+		function filterAndSortPosts() {
+			const selectedCategory = categoryFilter.value;
+			const sortValue = sortOrder.value;
+			
+			console.log('Using original posts:', originalPosts.length);
+			console.log('Selected category:', selectedCategory);
+			
+			// Filter posts from the original posts array
+			let filteredPosts = originalPosts.filter(post => {
+				// Category filter
+				if (selectedCategory) {
+					// Check for category links first
+					const categoryLinks = post.querySelectorAll('a[href*="/category/"]');
+					let hasCategory = Array.from(categoryLinks).some(link => 
+						link.href.includes('/category/' + selectedCategory)
+					);
+					
+					// If no category links found, check class names
+					if (!hasCategory) {
+						const classList = post.className.split(' ');
+						hasCategory = classList.includes('category-' + selectedCategory);
+					}
+					
+					console.log('Post categories:', post.className.split(' ').filter(c => c.startsWith('category-')));
+					console.log('Has category:', hasCategory);
+					
+					if (!hasCategory) return false;
+				}
+				
+				return true;
+			});
+			
+			console.log('Filtered posts:', filteredPosts.length);
+			
+			// Sort posts
+			filteredPosts.sort((a, b) => {
+				const [sortBy, direction] = sortValue.split('-');
+				let comparison = 0;
+				
+				switch(sortBy) {
+					case 'date':
+						// Try multiple ways to get the date
+						const dateElementA = a.querySelector('.wp-block-post-date');
+						const dateElementB = b.querySelector('.wp-block-post-date');
+						
+						let dateA, dateB;
+						
+						// Try datetime attribute first
+						if (dateElementA?.getAttribute('datetime')) {
+							dateA = new Date(dateElementA.getAttribute('datetime'));
+						} else if (dateElementA?.textContent) {
+							dateA = new Date(dateElementA.textContent);
+						} else {
+							// Fallback: use post ID as proxy for date (higher ID = newer)
+							dateA = new Date(parseInt(a.className.match(/post-(\d+)/)?.[1] || 0));
+						}
+						
+						if (dateElementB?.getAttribute('datetime')) {
+							dateB = new Date(dateElementB.getAttribute('datetime'));
+						} else if (dateElementB?.textContent) {
+							dateB = new Date(dateElementB.textContent);
+						} else {
+							// Fallback: use post ID as proxy for date (higher ID = newer)
+							dateB = new Date(parseInt(b.className.match(/post-(\d+)/)?.[1] || 0));
+						}
+						
+						comparison = dateA - dateB;
+						break;
+					case 'title':
+						const titleA = a.querySelector('.wp-block-post-title')?.textContent || '';
+						const titleB = b.querySelector('.wp-block-post-title')?.textContent || '';
+						comparison = titleA.localeCompare(titleB);
+						break;
+					case 'author':
+						const authorA = a.querySelector('.wp-block-post-author')?.textContent || '';
+						const authorB = b.querySelector('.wp-block-post-author')?.textContent || '';
+						comparison = authorA.localeCompare(authorB);
+						break;
+				}
+				
+				return direction === 'desc' ? -comparison : comparison;
+			});
+			
+			// Get the post template container
+			const postTemplate = queryBlock.querySelector('.wp-block-post-template');
+			
+			if (postTemplate) {
+				// Remove all posts from DOM
+				originalPosts.forEach(post => {
+					post.remove();
+				});
+				
+				// Re-append posts in sorted order
+				filteredPosts.forEach(post => {
+					postTemplate.appendChild(post);
+				});
+			} else {
+				// Alternative: Use the query block as container
+				const queryContainer = queryBlock;
+				if (queryContainer) {
+					// Remove all posts from DOM
+					originalPosts.forEach(post => {
+						post.remove();
+					});
+					
+					// Re-append posts in sorted order
+					filteredPosts.forEach(post => {
+						queryContainer.appendChild(post);
+					});
+				} else {
+					// Fallback: hide/show method - ensure all posts are visible first
+					originalPosts.forEach(post => {
+						post.style.display = '';
+					});
+					
+					// Then hide the ones that don't match the filter
+					originalPosts.forEach(post => {
+						if (!filteredPosts.includes(post)) {
+							post.style.display = 'none';
+						}
+					});
+				}
+			}
+			
+			// Update pagination if needed
+			const pagination = document.querySelector('.wp-block-query-pagination');
+			if (pagination) {
+				pagination.style.display = filteredPosts.length === originalPosts.length ? '' : 'none';
+			}
+			
+			console.log('Filtering complete');
+		}
+		
+		// Initialize categories and set up event listeners
+		populateCategories();
+		
+		categoryFilter.addEventListener('change', filterAndSortPosts);
+		sortOrder.addEventListener('change', filterAndSortPosts);
+		
+		// Initial filter
+		filterAndSortPosts();
+	}
+	
+	// Initialize filters when DOM is ready
+	initializeFilters();
+});
+</script>
+<!-- /wp:html -->
