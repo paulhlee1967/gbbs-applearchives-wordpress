@@ -8,7 +8,7 @@
  *
  * @package GBBSPro
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @author Paul Lee
  * @link https://github.com/paulhlee1967/gbbs-pro-wordpress-theme
  */

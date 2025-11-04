@@ -56,6 +56,10 @@ Yes, the theme includes skip links, proper ARIA labels, focus indicators, and sc
 
 == Changelog ==
 
+= 1.0.1 =
+* Line spacing updated for better readability
+* Archive template updated to remove the sidebar
+
 = 1.0.0 =
 * Initial release
 * Authentic Apple II styling and typography
@@ -68,6 +72,9 @@ Yes, the theme includes skip links, proper ARIA labels, focus indicators, and sc
 * Comprehensive documentation and GitHub repository support
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Update includes line spacing improvements and archive template updates. No action required.
 
 = 1.0.0 =
 Initial release of the GBBS Pro WordPress theme.
